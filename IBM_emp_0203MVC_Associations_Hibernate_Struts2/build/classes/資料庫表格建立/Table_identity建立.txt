@@ -1,0 +1,44 @@
+建立表格: EMP2 和 DEPT2
+--------------------------------------------------------------------------------------------------------
+drop table emp2;
+drop table dept2;
+
+
+create table dept2 (
+ deptno              int IDENTITY (10,10) not null,
+ dname               varchar(14),
+ loc                 varchar(13),
+ constraint dept2_primary_key primary key (deptno));
+
+insert into dept2 values ('財務部','臺灣台北');
+insert into dept2 values ('研發部','臺灣新竹');
+insert into dept2 values ('業務部','美國紐約');
+insert into dept2 values ('生管部','中國上海');
+
+
+create table emp2 (
+ empno               int IDENTITY (7001,1) not null,
+ ename               varchar(10),
+ job                 varchar(9),
+ hiredate            date,
+ sal                 float,
+ comm                float,
+ deptno              int not null,
+ constraint emp2_deptno_fk foreign key (deptno) references dept2 (deptno),
+ constraint emp2_empno_pk primary key (empno));
+
+insert into emp2 values ('king','president','1981-11-17',5000.5,0.0,10);
+insert into emp2 values ('blake','manager','1981-05-01',2850,0.0,30);
+insert into emp2 values ('clark','manager','1981-01-09',2450,0.0,10);
+insert into emp2 values ('jones','manager','1981-04-02',2975,0.0,20);
+insert into emp2 values ('martin','salesman','1981-09-28',1250,1400,30);
+insert into emp2 values ('allen','salesman','1981-02-2',1600,300,30);
+insert into emp2 values ('turner','salesman','1981-09-28',1500,0,30);
+insert into emp2 values ('james','clerk','1981-12-03',950,0.0,30);
+insert into emp2 values ('ward','salesman','1981-02-22',1250,500,30);
+insert into emp2 values ('ford','analyst','1981-12-03',3000,0.0,20);
+insert into emp2 values ('smith','clerk','1980-12-17',800,0.0,20);
+insert into emp2 values ('scott','analyst','1981-12-09',3000,0.0,20);
+insert into emp2 values ('adams','clerk','1983-01-12',1100,0.0,20);
+insert into emp2 values ('miller','clerk','1982-01-23',1300,0.0,10);
+--------------------------------------------------------------------------------------------------------

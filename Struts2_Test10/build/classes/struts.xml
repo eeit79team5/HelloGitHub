@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+	"-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+	"http://struts.apache.org/dtds/struts-2.3.dtd">
+
+<struts>
+
+	<constant name="struts.devMode" value="true" />
+	<!--以下設定全域範圍的國際化資源檔，檔名globalMessages起頭，如globalMessages_zh_TW.properties -->
+	<!--globalMessages名稱可自取 -->
+	<!--無預設值 -->
+	<constant name="struts.custom.i18n.resources" value="globalMessages" />
+	<package name="myPackage" namespace="/myNamespace" extends="struts-default">
+
+
+		<!-- 以下的 <global-results> 與 <global-exception-mappings> 適用於此 package 內所acton -->
+		<!-- 在執行中如果出現 Exception 時會導向根目錄的 error.jsp， 然後由 error.jsp 顯示 500堆疊 -->
+		<!-- 此設定可有可無，不一定要設 -->
+		<global-results>
+			<result name="error">/error.jsp</result>
+		</global-results>
+
+		<global-exception-mappings>
+			<exception-mapping exception="java.lang.Exception"
+				result="error" />
+		</global-exception-mappings>
+
+
+		<action name="myAction" class="com.action.HelloAction" method="add">
+			<result name="success" type="dispatcher">/hello.jsp</result>
+			<result name="input" type="dispatcher">/form.jsp</result>			
+		</action>
+
+	</package>
+
+</struts>
+
+<!-- struts.xml 說明 -->
+<!-- 說明1. 這個檔案是Struts2的主要設定檔 -->
+<!-- 說明2. struts.xml必須放在classpath的根目錄內: 也就是直接放在WEB-INF\classes目錄內 -->
