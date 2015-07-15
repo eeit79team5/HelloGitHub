@@ -1,0 +1,7 @@
+# IDE metadata. Don't track them!
+.metadata/
+.recommenders/
+RemoteSystemsTempFiles/
+
+# Configuration. Keep private, don't track!
+Servers/
